@@ -4,6 +4,8 @@ import IsAnon from './components/isAnon'
 import SignUp from './pages/SignUp'
 import Login from './pages/Login'
 import Home from './pages/Home'
+import Feed from './pages/Feed'
+import IsPrivate from './components/isPrivate'
 
 function App() {
   
@@ -14,6 +16,7 @@ function App() {
        <Route path='/' element={<Home/>}/>
        <Route path='/signup' element={<IsAnon><SignUp/></IsAnon>}/>
        <Route path='/login' element={<IsAnon><Login/></IsAnon>}/>
+       <Route path="/feed" element={<IsPrivate><Feed /></IsPrivate>}/>
     </Routes>
    </div>
   )
