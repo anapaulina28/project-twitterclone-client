@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../context/auth.context';
@@ -34,7 +34,7 @@ const NavBar = () => {
   };
 
   // Initialize the search input field with the query from the URL
-  React.useEffect(() => {
+  useEffect(() => {
     if (query) {
       setSearch(query);
     }
