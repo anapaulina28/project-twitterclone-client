@@ -31,7 +31,7 @@ const SearchUsers = () => {
   // Initialize the search input field with the query from the URL
   useEffect(() => {
     fetchData()
-  }, []);
+  }, [query]);
 
 
  
@@ -40,15 +40,20 @@ const SearchUsers = () => {
     <div>
       <NavBar/>
       <h2>Search Results</h2>
-      <p>Search query: {query}</p>
       <div>
-        {results.map((user) => (
-          <div key={user._id}>
-            <p><strong>@{user.name}</strong></p>
-            <p>{user.email}</p>
-            <img src={user.profileImage} alt='profile pic'/>
+      {results.length > 0 ? ( // Check if there are results
+        <div>
+          {results.map((user) => (
+            <div key={user._id}>
+              <p><strong>@{user.name}</strong></p>
+              <p>{user.email}</p>
+              <img src={user.profileImage} alt='profile pic' />
             </div>
-        ))}
+          ))}
+        </div>
+      ) : ( // Display a message when there are no results
+        <p>No results found. 😢</p>
+      )}
       </div>
     </div>
   );

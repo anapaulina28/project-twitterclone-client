@@ -70,12 +70,6 @@ const NavBar = () => {
           />
           <button type='submit'>Search</button>
         </form>
-
-        <ul>
-          {result.map((user) => (
-            <li key={user._id}>{user.name}</li>
-          ))}
-        </ul>
       </div>
     </div>
   );
