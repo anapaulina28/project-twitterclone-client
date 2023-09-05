@@ -1,15 +1,38 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import '../Feed/index.css'
+import NavBar from '../../components/Navbar'
+
+
 
 const API_URL = 'http://localhost:5005'
 
 
 const Feed = () => {
     const [feeds, setFeed] = useState([])
+    const [text, setText] = useState('')
+    const navigate = useNavigate()
+
+    const storedToken = localStorage.getItem('authToken')
+    const refreshPage = () => {
+        window.location.reload();
+      };
+
+    const createTweet = async  () => {
+
+        try {
+            const requestTweet = {text}
+            await axios.post(`${API_URL}/api/tweets`, requestTweet, {headers: {Authorization: `Bearer ${storedToken}`}})
+            navigate('/feed')
+            setText('')
+           } catch (error) {
+            console.log(error)
+        }
+    }
     
     const fetchData = async () => {
-        const storedToken = localStorage.getItem('authToken')
+       
        try {       
         const response = await axios.get(`${API_URL}/api/tweets`, {headers: {Authorization: `Bearer ${storedToken}`}})
         setFeed(response.data)
@@ -18,23 +41,58 @@ const Feed = () => {
         }
     }
 
+   
+     
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        
+        createTweet();
+    }
+    
+
+
+    
+
+
     useEffect(() => {
       fetchData()
     }, [])
+
+
     
 
   return (
     <div>
+        <NavBar/>
+        <div>
+            <h1>Speak Your Mind</h1>
+        <form onSubmit={handleSubmit}>
+            <label>
+                Tweet
+                <textarea type='text' name='text' value={text}  cols='30' rows='5' onChange={(e) =>setText(e.target.value)}></textarea>
+            </label>
+           <button type='submit' onClick={refreshPage}><strong>Tweet</strong></button>
+
+         </form>
+       </div>
+      
+
         {feeds.map((feed) =>{
             return (
-                <div key={feed._id}>
+               <div key={feed._id} className='tweet-box'>
+                    {feed.author && feed.author.profileImage ? (<img src={feed.author.profileImage} alt="userImage" />)
+                : (<p>No Image Found</p>)    
+                }
+                   
                       {feed.author && feed.author.name ? (
         <h3>{feed.author.name}</h3>
     ) : (
         <h3>No Author</h3>
     )}
-                    <p>{feed.text}</p>
-                </div>
+                    <Link to={`/feed/${feed._id}`}><p>{feed.text}</p></Link>
+                    <p>Likes: <span>{feed.likes.length}</span></p>
+                    <p>Comments: <span>{feed.comments.length}</span></p>
+                </div> 
             )
         })}
     </div>
