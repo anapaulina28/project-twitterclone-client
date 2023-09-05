@@ -1,62 +1,84 @@
-import { useContext, useState } from 'react';
-import { Link, useNavigate,  } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
 import { AuthContext } from '../../context/auth.context';
 
-const API_URL = 'http://localhost:5005'
-
-
+const API_URL = 'http://localhost:5005';
 
 const NavBar = () => {
-  const {isLoggedIn, user, logOutUser} = useContext(AuthContext);
-  const [search, setSearch] = useState('')
-  const [result, setResult] = useState([])
-  const storedToken = localStorage.getItem('authToken')
-  const navigate = useNavigate()
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const [search, setSearch] = useState('');
+  const [result, setResult] = useState([]);
+  const storedToken = localStorage.getItem('authToken');
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const fetchData = async () =>{
-    e.preventDefault()
+  const queryParams = new URLSearchParams(location.search);
+  const query = queryParams.get('query');
+
+  const fetchData = async (e) => {
+    e.preventDefault();
+
     try {
-      const response = await axios.get(`${API_URL}/api/search?name=${search}`,  {headers: {Authorization: `Bearer ${storedToken}`}})
-      setResult(response.data)
-      console.log(response.data)
-      
+      const response = await axios.get(`${API_URL}/api/search?name=${search}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      });
+      setResult(response.data);
+      console.log(response.data);
 
+      // Update the URL with the search query
+      navigate(`/search?query=${search}`);
     } catch (error) {
-      console.log('Error:', error)
+      console.log('Error:', error);
     }
-  }
+  };
 
+  // Initialize the search input field with the query from the URL
+  React.useEffect(() => {
+    if (query) {
+      setSearch(query);
+    }
+  }, [query]);
 
   return (
     <div>
-
-      <img src='' alt='Social Media'/>
-      {isLoggedIn && <div>
-        <button onClick={logOutUser}>Logout</button>
-        <br/>
+      <img src='' alt='Social Media' />
+      {isLoggedIn && (
         <div>
-        {user && user.profileImage ? (<img src={user.profileImage} alt="userImage" />)
-        : (<></>)}   
-        <p><strong>@{user && user.name}</strong></p>
+          <button onClick={logOutUser}>Logout</button>
+          <br />
+          <div>
+            {user && user.profileImage ? (
+              <img src={user.profileImage} alt="userImage" />
+            ) : (
+              <></>
+            )}
+            <p>
+              <strong>@{user && user.name}</strong>
+            </p>
+          </div>
         </div>
-
-      </div>}
+      )}
 
       <div>
-        <form >
-        <input type="text" placeholder='Search For Users' value={search} onChange={(e) => setSearch(e.target.value)}/>
-        <button onClick={fetchData}>Search</button>
+        <form onSubmit={fetchData}>
+          <input
+            type="text"
+            placeholder='Search For Users'
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button type='submit'>Search</button>
         </form>
 
-         <ul>
-        {result.map((user) => (
-          <li key={user._id}>{user.name}</li>
-        ))}
-      </ul> 
-        
+        <ul>
+          {result.map((user) => (
+            <li key={user._id}>{user.name}</li>
+          ))}
+        </ul>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default NavBar
+export default NavBar;
