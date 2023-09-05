@@ -16,6 +16,7 @@ function App() {
   return (
    <div>
     <Routes>
+       
        <Route path='/' element={<Home/>}/>
        <Route path='/signup' element={<IsAnon><SignUp/></IsAnon>}/>
        <Route path='/login' element={<IsAnon><Login/></IsAnon>}/>

@@ -42,7 +42,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <img src='' alt='Social Media' />
+      <Link to='/feed'><img src='' alt='Social Media' /></Link>
       {isLoggedIn && (
         <div>
           <button onClick={logOutUser}>Logout</button>

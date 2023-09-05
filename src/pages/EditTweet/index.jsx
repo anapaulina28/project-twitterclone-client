@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
+import NavBar from '../../components/Navbar'
 const API_URL ='http://localhost:5005'
 
 const EditTweet = () => {
@@ -41,6 +42,7 @@ const EditTweet = () => {
     
   return (
     <div>
+    <NavBar/>
         <h3>Edit Tweet</h3>
         <form onSubmit={handleSubmit}>
             <label>

@@ -1,12 +1,57 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import NavBar from '../../components/Navbar';
+const API_URL = 'http://localhost:5005'
 
-const SearchUsers = (props) => {
+
+const SearchUsers = () => {
+  const [results, setResults] = useState([])
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const query = queryParams.get('query');
+  const storedToken = localStorage.getItem('authToken');
+   const fetchData = async (e) => {
     
+
+    try {
+      const response = await axios.get(`${API_URL}/api/search?name=${query}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      });
+      setResults(response.data);
+      console.log(response.data);
+
+      // Update the URL with the search query
+      
+    } catch (error) {
+      console.log('Error:', error);
+    }
+  };
+
+  // Initialize the search input field with the query from the URL
+  useEffect(() => {
+    fetchData()
+  }, []);
+
+
+ 
+
   return (
     <div>
-      <h1>Search Result</h1>
+      <NavBar/>
+      <h2>Search Results</h2>
+      <p>Search query: {query}</p>
+      <div>
+        {results.map((user) => (
+          <div key={user._id}>
+            <p><strong>@{user.name}</strong></p>
+            <p>{user.email}</p>
+            <img src={user.profileImage} alt='profile pic'/>
+            </div>
+        ))}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default SearchUsers
+export default SearchUsers;

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
+import NavBar from '../../components/Navbar';
 
 const API_URL = 'http://localhost:5005';
 
@@ -114,6 +115,7 @@ const TweetDetails = () => {
 
   return (
     <div>
+    <NavBar/>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
