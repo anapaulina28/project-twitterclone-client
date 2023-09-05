@@ -14,6 +14,7 @@ const TweetDetails = () => {
   const [isUser, setIsUser] = useState(false);
   const [likeCount, setLikeCount] = useState(0); // Track like count
   const [isLiked, setIsLiked] = useState(false);
+  const [likes, setLikes] = useState([])
   const [text, setText] = useState('')
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -24,9 +25,11 @@ const TweetDetails = () => {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
       setTweet(response.data);
+      console.log("response data for tweet",response.data)
       if (response.data.author._id === user._id) {
         setIsUser(true);
       }
+      setLikes(response.data.likes)
       setLikeCount(response.data.likes ? response.data.likes.length : 0); // Initialize like count
       setLoading(false);
     } catch (error) {
@@ -41,6 +44,7 @@ const TweetDetails = () => {
       await axios.post(`${API_URL}/api/tweets/${feedId}/likes`, " ", {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
+      fetchData()
       setIsLiked(true);
       setLikeCount(likeCount + 1); // Increment like count
     } catch (error) {
@@ -53,7 +57,9 @@ const TweetDetails = () => {
       await axios.post(`${API_URL}/api/tweets/${feedId}/unlike`, " ", {
         headers: { Authorization: `Bearer ${storedToken}` },
       });
+      fetchData()
       setIsLiked(false);
+      setLikes(response.data.likes)
       setLikeCount(likeCount - 1); // Decrement like count
     } catch (error) {
       console.log('Error unliking tweet:', error);
@@ -76,7 +82,7 @@ const TweetDetails = () => {
         const requestComment = {text}
         await axios.post(`${API_URL}/api/comment/create/${feedId}`, requestComment, {
             headers: { Authorization: `Bearer ${storedToken}` }} )
-            navigate(`/feed/${feedId}`)
+            fetchData()
             setText('')
         
     } catch (error) {
@@ -84,9 +90,11 @@ const TweetDetails = () => {
     }
   }
 
-  const deleteComment = async () => {
+  const deleteComment = async (commentId) => {
     try {
-        await axios.delete(`${API_URL}/comments/delete/`)
+        await axios.delete(`${API_URL}/api/comment/delete/${commentId}/${feedId}`,{
+            headers: { Authorization: `Bearer ${storedToken}` }});
+        fetchData();
     } catch (error) {
         
     }
@@ -123,7 +131,7 @@ const TweetDetails = () => {
             <h3>No Author</h3>
           )}
           <p>Tweet: {tweet.text}</p>
-          {isLiked ? (
+          {isLiked ||likes.filter(like => like._id === user._id).length > 0 ? (
             <button onClick={unlikeData}>
               Unlike <p>Likes: {likeCount}</p>
             </button>
@@ -152,6 +160,9 @@ const TweetDetails = () => {
                   <div key={comment._id}>
                     <p> <strong> {comment.author && comment.author.name}</strong> </p>
                     <p>{comment.text}</p>
+                {comment.author._id === user._id &&
+                    (<button onClick={()=>{deleteComment(comment._id)}}>Delete Comment</button>)
+                }
                 </div>
                 ))}
               </div>

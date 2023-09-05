@@ -33,7 +33,13 @@ const NavBar = () => {
       <img src='' alt='Social Media'/>
       {isLoggedIn && <div>
         <button onClick={logOutUser}>Logout</button>
-        <p>{user && user.name}</p>
+        <br/>
+        <div>
+        {user && user.profileImage ? (<img src={user.profileImage} alt="userImage" />)
+        : (<></>)}   
+        <p><strong>@{user && user.name}</strong></p>
+        </div>
+
       </div>}
 
       <div>

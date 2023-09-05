@@ -15,17 +15,14 @@ const Feed = () => {
     const navigate = useNavigate()
 
     const storedToken = localStorage.getItem('authToken')
-    const refreshPage = () => {
-        window.location.reload();
-      };
 
     const createTweet = async  () => {
 
         try {
             const requestTweet = {text}
             await axios.post(`${API_URL}/api/tweets`, requestTweet, {headers: {Authorization: `Bearer ${storedToken}`}})
-            navigate('/feed')
             setText('')
+            fetchData()
            } catch (error) {
             console.log(error)
         }
@@ -71,7 +68,7 @@ const Feed = () => {
                 Tweet
                 <textarea type='text' name='text' value={text}  cols='30' rows='5' onChange={(e) =>setText(e.target.value)}></textarea>
             </label>
-           <button type='submit' onClick={refreshPage}><strong>Tweet</strong></button>
+           <button type='submit'><strong>Tweet</strong></button>
 
          </form>
        </div>
