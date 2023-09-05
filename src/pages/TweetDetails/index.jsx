@@ -126,7 +126,7 @@ const TweetDetails = () => {
             <p>No Image Found</p>
           )}
           {tweet.author && tweet.author.name ? (
-            <h3>{tweet.author.name}</h3>
+            <h3>@{tweet.author.name}</h3>
           ) : (
             <h3>No Author</h3>
           )}
@@ -158,7 +158,7 @@ const TweetDetails = () => {
               <div>
                 {tweet.comments.map((comment) => (
                   <div key={comment._id}>
-                    <p> <strong> {comment.author && comment.author.name}</strong> </p>
+                    <p> <strong> @{comment.author && comment.author.name}</strong> </p>
                     <p>{comment.text}</p>
                 {comment.author._id === user._id &&
                     (<button onClick={()=>{deleteComment(comment._id)}}>Delete Comment</button>)

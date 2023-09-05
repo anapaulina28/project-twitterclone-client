@@ -82,7 +82,7 @@ const Feed = () => {
                 }
                    
                       {feed.author && feed.author.name ? (
-        <h3>{feed.author.name}</h3>
+        <h3>@{feed.author.name}</h3>
     ) : (
         <h3>No Author</h3>
     )}
