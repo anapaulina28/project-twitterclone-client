@@ -9,8 +9,10 @@ import IsPrivate from './components/isPrivate'
 import SearchUsers from './pages/SearchUsers'
 import TweetDetails from './pages/TweetDetails'
 import EditTweet from './pages/EditTweet'
+import UserTweet from './pages/UserTweet'
 
 function App() {
+  
   
 
   return (
@@ -24,6 +26,7 @@ function App() {
        <Route path='/search' element={<IsPrivate><SearchUsers /></IsPrivate>}/>
        <Route path='/feed/:feedId' element={<IsPrivate><TweetDetails /></IsPrivate>}/>
        <Route path='/feed/:feedId/edit' element={<IsPrivate><EditTweet/></IsPrivate>}/>
+       <Route path='/user/:Id/feed'  element={<IsPrivate><UserTweet/></IsPrivate>}/>
     </Routes>
    </div>
   )

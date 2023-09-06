@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import NavBar from '../../components/Navbar';
 const API_URL = 'http://localhost:5005'
 
@@ -45,7 +45,7 @@ const SearchUsers = () => {
         <div>
           {results.map((user) => (
             <div key={user._id}>
-              <p><strong>@{user.name}</strong></p>
+              <Link to={`/user/${user._id}/feed`}><p><strong>@{user.name}</strong></p></Link>
               <p>{user.email}</p>
               <img src={user.profileImage} alt='profile pic' />
             </div>
