@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import NavBar from '../../components/Navbar';
-const API_URL = 'http://localhost:5005'
+const API_URL = 'https://chattr-server-2.onrender.com'
 
 
 const SearchUsers = () => {

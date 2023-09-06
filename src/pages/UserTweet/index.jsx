@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
 
-const API_URL = 'http://localhost:5005'
+const API_URL = 'https://chattr-server-2.onrender.com'
 
 
 const UserTweet = () => {
