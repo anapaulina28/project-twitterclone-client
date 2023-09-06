@@ -20,14 +20,14 @@ const Home = () => {
         <div className='home-buttons'> 
 
           <div className="logo">
-          <img src='../../src/assets/images/logo.png' alt='chattr logo'/>
+          <img src='/images/logo.png' alt='chattr logo'/>
           </div>
 
           <Link to="/signup"><button>Signup</button></Link>
           <Link to="/login"><button>Login</button></Link>
 
           <div className="people">
-          <img src='../../src/assets/images/people.png' alt='people'/>
+          <img src='/images/people.png' alt='people'/>
           </div>
 
         </div>
