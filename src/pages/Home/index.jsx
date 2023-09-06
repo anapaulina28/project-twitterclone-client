@@ -1,17 +1,15 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
+import '../Home/index.css'
+
 
 const Home = () => {
     const {isLoggedIn, user, logOutUser} = 
     useContext(AuthContext);
     return (
       <nav>
-      <div>
-      <Link to="/">
-          <button>Home</button>
-      </Link>
-      </div>
+ 
       {isLoggedIn? (
         <div>
           <button onClick={logOutUser}>Logout</button>
@@ -19,12 +17,23 @@ const Home = () => {
         </div>
       ): 
       (
-        <div>
+        <div className='home-buttons'> 
+
+          <div className="logo">
+          <img src='../../../public/images/logo.png' alt='chattr logo'/>
+          </div>
+
           <Link to="/signup"><button>Signup</button></Link>
           <Link to="/login"><button>Login</button></Link>
+
+          <div className="people">
+          <img src='../../../public/images/people.png' alt='people'/>
+          </div>
+
         </div>
       )
     } 
+
       </nav>
     )
 }

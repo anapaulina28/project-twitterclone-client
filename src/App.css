@@ -1,8 +1,6 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  margin: 0 ;
+  padding: 0;
 }
 
 .logo {
@@ -39,4 +37,42 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.tweet-box {
+  border: 1px solid rgb(144, 55, 55);
+}
+
+body {
+  background-color: black;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: row; 
+  justify-content: flex-start; 
+  align-items: center; 
+  height: 130vh;
+  padding-left: 250px;
+  gap: 40px;
+}
+
+.home-buttons img {
+  width: 400px; 
+  height: auto; 
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }

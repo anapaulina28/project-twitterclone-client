@@ -2,6 +2,8 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
+import '../Login/index.css'
+
 
 const API_URL = "http://localhost:5005";
 
@@ -33,28 +35,41 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <div className="login-page">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
+
+
+      <div className="login-email">
         <label>
           Email:
+          </label>
           <input
             type="email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </label>
+          </div>
+
+
+          <div className="login-password">
+
         <label>
           Password:
+          </label>
           <input
             type="password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </label>
+          </div>
+         
+          <div className="login-button">
         <button type="submit">Login</button>
+        </div>
+
       </form>
       {errorMessage && <p>{errorMessage}</p>}
       <p>Do not have an account yet?</p>
