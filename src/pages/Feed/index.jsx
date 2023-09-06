@@ -3,7 +3,8 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import '../Feed/index.css'
 import NavBar from '../../components/Navbar'
-
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import ForumIcon from '@mui/icons-material/Forum';
 
 
 const API_URL = 'https://chattr-server-2.onrender.com'
@@ -92,8 +93,8 @@ const Feed = () => {
 
                     <Link to={`/feed/${feed._id}`}><p className='message'>{feed.text}</p></Link>
                     <div className='actions'>
-                    <p>Likes: <span>{feed.likes.length}</span></p>
-                    <p>Comments: <span>{feed.comments.length}</span></p>
+                    <p>< FavoriteBorderIcon/> <span>{feed.likes.length}</span></p>
+                    <p> <ForumIcon/> <span>{feed.comments.length}</span></p>
                     </div>
                 </div>
                     
