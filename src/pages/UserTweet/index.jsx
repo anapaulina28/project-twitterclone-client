@@ -32,7 +32,7 @@ const UserTweet = () => {
 
   return (
     <div>
-      <h3>@{userTweet.length > 0 && userTweet[0].name} Feed Tweets</h3>
+      <h3>@{userTweet.name} Tweets</h3>
       {userTweet.tweets && userTweet.tweets.length > 0 ? (
         userTweet.tweets.map((feed) => (
           <div key={feed._id}>
