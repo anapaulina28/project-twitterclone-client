@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/auth.context";
 import '../Login/index.css'
 
 
-const API_URL = "http://localhost:5005";
+const API_URL = "https://chattr-server-2.onrender.com";
 
 function LoginPage() {
   const [email, setEmail] = useState("");

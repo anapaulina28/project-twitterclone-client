@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
+import NavBar from '../../components/Navbar'
 
 
 const API_URL = 'https://chattr-server-2.onrender.com'
@@ -32,6 +33,7 @@ const UserTweet = () => {
 
   return (
     <div>
+      <NavBar/>
       <h3>@{userTweet.name} Tweets</h3>
       {userTweet.tweets && userTweet.tweets.length > 0 ? (
         userTweet.tweets.map((feed) => (
