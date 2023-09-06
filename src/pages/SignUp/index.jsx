@@ -109,14 +109,17 @@ const SignUp = () => {
     }
 
   return (
-    <div>
+    <div className='signup-page'>
         <h1>Sign Up</h1>
         <form onSubmit={handleSubmit}>
+
+            <div className='signup-buttons'>
             <label>Email: <input type='email' name='email' value={email} onChange={(e) =>setEmail(e.target.value)}/></label>
             <label>Password: <input type='password' name='password' value={password} onChange={(e) =>setPassword(e.target.value)}/></label>
             <label>Name: <input type='text' name='name' value={name} onChange={(e) =>setName(e.target.value)}/></label>
             <button type='submit'>Sign Up</button>
             {errorMessage && <p>{errorMessage}</p>}
+            </div>
         </form>
     </div>
   )
