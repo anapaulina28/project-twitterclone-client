@@ -77,18 +77,26 @@ const Feed = () => {
         {feeds.map((feed) =>{
             return (
                <div key={feed._id} className='tweet-box'>
-                    {feed.author && feed.author.profileImage ? (<img src={feed.author.profileImage} alt="userImage" />)
+                <div className='body'>
+                    <div className='top'>
+                {feed.author && feed.author.profileImage ? (<img src={feed.author.profileImage} className='profile' alt="userImage" />)
                 : (<p>No Image Found</p>)    
                 }
                    
                       {feed.author && feed.author.name ? (
-        <h3>@{feed.author.name}</h3>
+        <span className='name'>@{feed.author.name}</span>
     ) : (
         <h3>No Author</h3>
     )}
-                    <Link to={`/feed/${feed._id}`}><p>{feed.text}</p></Link>
+    </div>
+
+                    <Link to={`/feed/${feed._id}`}><p className='message'>{feed.text}</p></Link>
+                    <div className='actions'>
                     <p>Likes: <span>{feed.likes.length}</span></p>
                     <p>Comments: <span>{feed.comments.length}</span></p>
+                    </div>
+                </div>
+                    
                 </div> 
             )
         })}
