@@ -1,7 +1,8 @@
 .login-page {
     max-width: 400px;
     margin: auto;
-    margin-top: 300px;
+    margin-top: 150px;
+    margin-bottom: 150px;
     padding: 20px;
     border: 4px solid #0D93DF;
     background-color: rgba(13, 147, 223, 0.2);
