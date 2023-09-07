@@ -8,7 +8,7 @@ const Home = () => {
     const {isLoggedIn, user, logOutUser} = 
     useContext(AuthContext);
     return (
-      <nav>
+      <nav className='nav'>
  
       {isLoggedIn? (
         <div>
@@ -22,10 +22,11 @@ const Home = () => {
           <div className="logo">
           <img src='/images/logo.png' alt='chattr logo'/>
           </div>
-
+          
+          <div className='div-buttons'>
           <Link to="/signup"><button>Signup</button></Link>
           <Link to="/login"><button>Login</button></Link>
-
+          </div>
           <div className="people">
           <img src='/images/people.png' alt='people'/>
           </div>
@@ -39,3 +40,5 @@ const Home = () => {
 }
 
 export default Home
+
+

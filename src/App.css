@@ -43,6 +43,10 @@ body {
   background-color: black;
 }
 
+.nav{
+  margin-right: 300px;
+}
+
 .home-buttons {
   display: flex;
   flex-direction: row; 
@@ -51,6 +55,24 @@ body {
   height: 130vh;
   padding-left: 250px;
   gap: 40px;
+}
+
+.home-buttons {
+  display: flex;
+  flex-direction: column; /* Changed from 'row' to 'column' */
+  justify-content: center; /* Center the items along the main axis */
+  align-items: center; /* Center the items along the cross axis */
+  height: 100vh; /* Adjusted height for visibility */
+}
+
+button {
+  margin: 10px 0; /* Added margin for spacing between buttons */
+}
+
+.div-buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
 .home-buttons img {
