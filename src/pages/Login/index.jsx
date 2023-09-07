@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
 import '../Login/index.css'
 
-
 const API_URL = "https://chattr-server-2.onrender.com";
 
 function LoginPage() {
@@ -26,7 +25,6 @@ function LoginPage() {
       .then((response) => {
         storeToken(response.data.authToken);
         authenticateUser();
-        
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -38,38 +36,29 @@ function LoginPage() {
     <div className="login-page">
       <h1>Login</h1>
       <form onSubmit={handleSubmit}>
-
-
-      <div className="login-email">
-        <label>
-          Email:
-          </label>
+        <div className="login-email">
+          <label>Email:</label>
           <input
             type="email"
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          </div>
+        </div>
 
-
-          <div className="login-password">
-
-        <label>
-          Password:
-          </label>
+        <div className="login-password">
+          <label>Password:</label>
           <input
             type="password"
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          </div>
-         
-          <div className="login-button">
-        <button type="submit">Login</button>
         </div>
 
+        <div className="login-button">
+          <button type="submit">Login</button>
+        </div>
       </form>
       {errorMessage && <p>{errorMessage}</p>}
       <p>Do not have an account yet?</p>

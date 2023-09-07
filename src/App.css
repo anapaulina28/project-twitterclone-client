@@ -63,47 +63,6 @@ body {
   height: auto;
 }
 
-.people {
-}
-
-.login-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  margin-bottom: 100px;
-
-
-  
-}
-
-.login-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-
-.signup-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;  
-  
-}
-
-
-.signup-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.signup-buttons label {
-  margin-bottom: 10px; /* Add some space between labels */
-}
 
 
 

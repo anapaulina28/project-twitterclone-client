@@ -1,0 +1,33 @@
+.tweet-list {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .username {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .tweet {
+    border: 1px solid #1da1f2;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(13, 147, 223, 0.2);
+  }
+  
+  .tweet-label {
+    font-weight: bold;
+  }
+  
+  .tweet-text {
+    color: #1da1f2;
+    text-decoration: none;
+    font-size: 1.2em;
+  }
+  
+  .no-tweets {
+    font-size: 1.5em;
+    color: #1da1f2;
+  }
+  

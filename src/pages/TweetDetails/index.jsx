@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
 import NavBar from '../../components/Navbar';
+import Skeleton from '@mui/material/Skeleton';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import "../TweetDetails/index.css" 
@@ -121,7 +122,13 @@ const TweetDetails = () => {
     <div >
     <NavBar/>
       {loading ? (
-        <p>Loading...</p>
+        <div className="tweet-details-skeleton">
+        <Skeleton variant="rectangular" width={200} height={200} style={{ marginBottom: '10px' }} />
+        <Skeleton variant="text" width={200} style={{ marginBottom: '10px' }} />
+        <Skeleton variant="text" width={200} style={{ marginBottom: '10px' }} />
+        <Skeleton variant="text" width={200} style={{ marginBottom: '10px' }} />
+        <Skeleton variant="text" width={200} style={{ marginBottom: '10px' }} />
+      </div>
       ) : error ? (
         <p>{error}</p>
       ) : tweet ? (
