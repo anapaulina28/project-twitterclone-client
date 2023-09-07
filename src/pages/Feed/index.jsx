@@ -62,16 +62,23 @@ const Feed = () => {
   return (
     <div>
         <NavBar/>
-        <div>
-            <h1>Speak Your Mind</h1>
-        <form onSubmit={handleSubmit}>
-            <label>
-                Tweet
-                <textarea type='text' name='text' value={text}  cols='30' rows='5' onChange={(e) =>setText(e.target.value)}></textarea>
-            </label>
-           <button type='submit'><strong>Tweet</strong></button>
-
-         </form>
+        <div className='heading'>
+            <h1>What's Up?</h1>
+            <form onSubmit={handleSubmit} className="form-container">
+    <textarea
+        type='text'
+        name='text'
+        value={text}
+        cols='30'
+        rows='5'
+        className="textarea-input"
+        onChange={(e) => setText(e.target.value)}
+        placeholder="What's happening?"
+    ></textarea>
+    <button type='submit' className="submit-button">
+        <strong>Post</strong>
+    </button>
+</form>
        </div>
       
 

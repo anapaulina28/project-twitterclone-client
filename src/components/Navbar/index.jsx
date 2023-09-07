@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from '../../context/auth.context';
+import "../Navbar/index.css"
 
 const API_URL = 'https://chattr-server-2.onrender.com';
 
@@ -41,37 +42,46 @@ const NavBar = () => {
   }, [query]);
 
   return (
-    <div>
-      <Link to='/feed'><img src='' alt='Social Media' /></Link>
-      {isLoggedIn && (
-        <div>
-          <button onClick={logOutUser}>Logout</button>
-          <br />
-          <div>
-            {user && user.profileImage ? (
-              <img src={user.profileImage} alt="userImage" />
-            ) : (
-              <></>
-            )}
-            <p>
-              <strong>@{user && user.name}</strong>
-            </p>
-          </div>
-        </div>
-      )}
-
+    <div className='feed-nav'>
+  <div>
+    {isLoggedIn && (
       <div>
-        <form onSubmit={fetchData}>
-          <input
-            type="text"
-            placeholder='Search For Users'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <button type='submit'>Search</button>
-        </form>
+        <div>
+          {user && user.profileImage ? (
+            <img src={user.profileImage} alt="userImage" />
+          ) : (
+            <></>
+          )}
+          <p>
+            <strong className='user'>@{user && user.name}</strong>
+          </p>
+        </div>
       </div>
-    </div>
+    )}
+  </div>
+
+  <div className='feed-logo'>
+    <Link to='/feed'><img src='/images/logo.png' alt='Social Media' /></Link>
+  </div>
+
+  <div>
+    <form onSubmit={fetchData} className="search-form">
+      <input
+        type="text"
+        placeholder='Search For Users'
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="search-input"
+      />
+      <button type='submit'>Search</button>
+    </form>
+    
+    {isLoggedIn && (
+      <button className="logout-btn" onClick={logOutUser}>Logout</button>
+    )}
+  </div>
+</div>
+
   );
 };
 

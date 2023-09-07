@@ -1,0 +1,62 @@
+
+
+.tweet-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  .tweet-details img {
+    width: 400px; 
+    height: auto; 
+    border-radius: 2% 2% 5% 5%;
+  
+  }
+
+  .tweet-details-box {
+    border: 10px solid #0D93DF ;
+    border-radius: 20px;
+    margin-bottom: 100px;
+    background-color: rgba(13, 147, 223, 0.2);
+  } 
+  .comment-box {
+    border: 2px solid #0D93DF;
+    margin-bottom: 80px;
+    border-radius: 20px;
+    width: 600px;
+    margin-top: 25px;
+    background-color: rgba(13, 147, 223, 0.2)
+  }
+
+  .comment-box button {
+    margin-bottom: 15px;
+  }
+  
+  .post {
+    font-size: 30px;
+  }
+
+  .details-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px; /* Add margin to create space between the buttons and other content */
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+  
+  .details-buttons button {
+    flex-grow: 1;
+    margin-right: 20px; /* Adjust as needed to control the space between buttons */
+  }
+  
+
+  .edit-button {
+    color: white;
+
+  }
+
+  .username {
+    font-size: 50px;
+  }

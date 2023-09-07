@@ -3,6 +3,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../context/auth.context';
 import NavBar from '../../components/Navbar';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import "../TweetDetails/index.css" 
+
 
 const API_URL = 'https://chattr-server-2.onrender.com';
 
@@ -114,40 +118,42 @@ const TweetDetails = () => {
   
 
   return (
-    <div>
+    <div >
     <NavBar/>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>{error}</p>
       ) : tweet ? (
-        <div>
+        <div className='tweet-details'>
+          <div className='tweet-details-box'>
           {tweet.author && tweet.author.profileImage ? (
             <img src={tweet.author.profileImage} alt="userImage" />
           ) : (
             <p>No Image Found</p>
           )}
           {tweet.author && tweet.author.name ? (
-            <h3>@{tweet.author.name}</h3>
+            <h3 className='username'>@{tweet.author.name}</h3>
           ) : (
             <h3>No Author</h3>
           )}
-          <p>Tweet: {tweet.text}</p>
+          <p className='post'><strong>Post: </strong>{tweet.text}</p>
           {isLiked ||likes.filter(like => like._id === user._id).length > 0 ? (
             <button onClick={unlikeData}>
-              Unlike <p>Likes: {likeCount}</p>
+               <p>< FavoriteIcon/>   {likeCount}</p>
             </button>
           ) : (
             <button onClick={likeData}>
-              Like <p>Likes: {likeCount}</p>
+               <p>< FavoriteBorderIcon/>   {likeCount}</p>
             </button>
           )}
-        <div>
-        {isUser && <Link to={`/feed/${feedId}/edit`}>Edit Tweet</Link>}
-        <br />
+        <div className='details-buttons'>
+        {isUser && <button><Link className="edit-button" to={`/feed/${feedId}/edit`}>Edit Post </Link> </button>}
+       
 
-        {isUser && <button onClick={deleteTweet}>Delete Tweet</button>}
+        {isUser && <button className='delete-button' onClick={deleteTweet}>Delete Post</button>}
       </div>
+        </div>
           <form onSubmit={handlesubmit}>
             <label></label>
             <textarea type="text" name='text' value={text} onChange={(e) => setText(e.target.value)} placeholder='Leave your comment here' cols='30' rows='5'></textarea>
@@ -156,12 +162,12 @@ const TweetDetails = () => {
           </form>
           {tweet.comments && tweet.comments.length > 0 ? (
             <div>
-              <p>Comments:</p>
+              
               <div>
                 {tweet.comments.map((comment) => (
-                  <div key={comment._id}>
+                  <div className="comment-box" key={comment._id} >
                     <p> <strong> @{comment.author && comment.author.name}</strong> </p>
-                    <p>{comment.text}</p>
+                    <p><strong>Comment: </strong>{comment.text}</p>
                 {comment.author._id === user._id &&
                     (<button onClick={()=>{deleteComment(comment._id)}}>Delete Comment</button>)
                 }
