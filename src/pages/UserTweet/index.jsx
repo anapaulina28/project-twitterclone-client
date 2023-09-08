@@ -46,7 +46,7 @@ const UserTweet = () => {
           userTweet.tweets.map((feed) => (
             <div className="tweet" key={feed._id}>
               <p className="tweet-label">
-                <strong>Tweet</strong>
+                <strong>Post</strong>
               </p>
               <Link to={`/feed/${feed._id}`} className="tweet-text">
                 {feed.text}
@@ -54,7 +54,7 @@ const UserTweet = () => {
             </div>
           ))
         ) : (
-          <h1 className="no-tweets">No tweets found for this user.</h1>
+          <h1 className="no-tweets">No posts found for this user.</h1>
         )}
       </div>
     </div>
