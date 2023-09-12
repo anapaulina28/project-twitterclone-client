@@ -35,3 +35,28 @@
     font-size: 50px;
   }
   
+  @media (max-width: 768px) {
+    .feed-nav {
+      flex-direction: column; /* Stack items vertically on small screens */
+      padding: 10px 0; /* Reduce top and bottom padding */
+    }
+  
+    .feed-logo img {
+      max-width: 100%; /* Make the logo responsive to screen width */
+      margin-left: 0; /* Remove left margin on small screens */
+    }
+  
+    .search-form {
+      margin-top: 10px; /* Add space between user info and search bar */
+    }
+  
+    .logout-btn {
+      margin-left: 0; /* Remove left margin on small screens */
+      margin-top: 10px; /* Add space between search bar and logout button */
+    }
+  
+    .search-input {
+      margin-right: 0; /* Remove right margin on small screens */
+      flex-grow: 1; /* Allow input field to grow and take available space */
+    }
+  }

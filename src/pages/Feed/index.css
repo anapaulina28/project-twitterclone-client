@@ -103,3 +103,24 @@
     cursor: pointer;
     font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  .tweet-box {
+    min-width: 100%;
+  }
+  
+  .message {
+    font-size: 20px;
+    margin-left: 20px;
+  }
+  
+  .actions {
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-around;
+  }
+  
+  .form-container {
+    width: 90%;
+  }
+}
