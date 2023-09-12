@@ -1,33 +1,61 @@
+/* Default styles for larger screens */
 .tweet-list {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.username {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.tweet {
+  border: 1px solid #1da1f2;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: rgba(13, 147, 223, 0.2);
+}
+
+.tweet-label {
+  font-weight: bold;
+}
+
+.tweet-text {
+  color: #1da1f2;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.no-tweets {
+  font-size: 1.5em;
+  color: #1da1f2;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .tweet-list {
+    padding: 10px; /* Reduce padding on smaller screens */
   }
-  
+
   .username {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    font-size: 1.2em; /* Reduce font size for username on smaller screens */
   }
-  
+
   .tweet {
-    border: 1px solid #1da1f2;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: rgba(13, 147, 223, 0.2);
+    padding: 8px; /* Reduce padding on smaller screens */
+    margin-bottom: 8px; /* Reduce margin between tweets on smaller screens */
   }
-  
+
   .tweet-label {
     font-weight: bold;
   }
-  
+
   .tweet-text {
-    color: #1da1f2;
-    text-decoration: none;
-    font-size: 1.2em;
+    font-size: 1.1em; /* Reduce font size for tweet text on smaller screens */
   }
-  
+
   .no-tweets {
-    font-size: 1.5em;
-    color: #1da1f2;
+    font-size: 1.2em; /* Reduce font size for the "No tweets found" message on smaller screens */
   }
-  
+}

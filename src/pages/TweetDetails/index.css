@@ -1,62 +1,88 @@
 
-
+/* Default styles for larger screens */
 .tweet-details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: 100px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.tweet-details img {
+  width: 400px;
+  height: auto;
+  border-radius: 2% 2% 5% 5%;
+}
+
+.tweet-details-box {
+  border: 10px solid #0D93DF;
+  border-radius: 20px;
+  margin-bottom: 100px;
+  background-color: rgba(13, 147, 223, 0.2);
+}
+
+.comment-box {
+  border: 2px solid #0D93DF;
+  margin-bottom: 40px;
+  border-radius: 20px;
+  width: 100%; /* Make it responsive to the screen width */
+  margin-top: 25px;
+  background-color: rgba(13, 147, 223, 0.2);
+}
+
+.comment-box button {
+  margin-bottom: 15px;
+}
+
+.post {
+  font-size: 30px;
+}
+
+.details-buttons {
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap to the next row on smaller screens */
+  justify-content: space-between;
+  margin-top: 40px; /* Add margin to create space between the buttons and other content */
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.details-buttons button {
+  flex-grow: 1;
+  margin-right: 20px; /* Adjust as needed to control the space between buttons */
+}
+
+.edit-button {
+  color: white;
+}
+
+.username {
+  font-size: 50px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
   .tweet-details img {
-    width: 400px; 
-    height: auto; 
-    border-radius: 2% 2% 5% 5%;
-  
+    width: 100%; /* Make the image responsive to the screen width */
+    border-radius: 0; /* Remove border-radius on smaller screens */
   }
 
   .tweet-details-box {
-    border: 10px solid #0D93DF ;
-    border-radius: 20px;
-    margin-bottom: 100px;
-    background-color: rgba(13, 147, 223, 0.2);
-  } 
-  .comment-box {
-    border: 2px solid #0D93DF;
-    margin-bottom: 40px;
-    border-radius: 20px;
-    width: 600px;
-    margin-top: 25px;
-    background-color: rgba(13, 147, 223, 0.2)
+    border-width: 5px; /* Reduce border width on smaller screens */
   }
 
-  .comment-box button {
-    margin-bottom: 15px;
-  }
-  
-  .post {
-    font-size: 30px;
+  .comment-box {
+    width: 90%; /* Make the comment box slightly narrower on smaller screens */
   }
 
   .details-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px; /* Add margin to create space between the buttons and other content */
-    margin-bottom: 20px;
-    margin-left: 20px;
+    flex-direction: column; /* Stack buttons vertically on smaller screens */
+    margin-left: 0; /* Remove left margin on smaller screens */
   }
-  
+
   .details-buttons button {
-    flex-grow: 1;
-    margin-right: 20px; /* Adjust as needed to control the space between buttons */
+    flex-grow: 0; /* Prevent buttons from expanding on smaller screens */
+    margin-right: 0; /* Remove right margin on smaller screens */
+    margin-bottom: 10px; /* Add space between buttons on smaller screens */
   }
-  
-
-  .edit-button {
-    color: white;
-
-  }
-
-  .username {
-    font-size: 50px;
-  }
+}

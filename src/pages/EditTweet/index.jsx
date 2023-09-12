@@ -2,7 +2,10 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import NavBar from '../../components/Navbar'
+import '../EditTweet/index.css'
 const API_URL ='https://chattr-server-2.onrender.com'
+
+
 
 const EditTweet = () => {
     const [text, setText] = useState('')
