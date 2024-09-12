@@ -3,18 +3,23 @@
   max-width: 600px;
   margin: auto;
   padding: 20px;
+  background-color: #ffffff; /* White background for tweets */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .username {
   font-size: 1.5em;
   margin-bottom: 10px;
+  color: #1da1f2; /* Twitter blue */
 }
 
 .tweet {
-  border: 1px solid #1da1f2;
+  border: 1px solid #e1e8ed; /* Light gray border */
   padding: 10px;
   margin-bottom: 10px;
-  background-color: rgba(13, 147, 223, 0.2);
+  background-color: #f5f8fa; /* Light background for tweets */
+  border-radius: 8px; /* Rounded corners */
 }
 
 .tweet-label {
@@ -22,14 +27,14 @@
 }
 
 .tweet-text {
-  color: #1da1f2;
+  color: #14171a; /* Dark text color */
   text-decoration: none;
   font-size: 1.2em;
 }
 
 .no-tweets {
   font-size: 1.5em;
-  color: #1da1f2;
+  color: #657786; /* Gray color for no tweets message */
 }
 
 /* Media query for smaller screens */
